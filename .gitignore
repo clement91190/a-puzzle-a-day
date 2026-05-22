@@ -1,8 +1,9 @@
 node_modules/
-dist/*.tar.gz
+dist/
 github-io/dist/
 github-io/node_modules/
 github-io/package-lock.json
+github-io/public/local-puzzle/*.whl
 __pycache__/
 .pytest_cache/
 .venv/
