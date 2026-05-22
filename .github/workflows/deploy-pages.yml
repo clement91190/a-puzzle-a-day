@@ -35,12 +35,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
-          cache-dependency-path: github-io/package-lock.json
 
       - name: Install JS deps
         working-directory: github-io
-        run: npm ci
+        # `npm install` (not `npm ci`) so we don't need a checked-in lockfile —
+        # the @cadbuildr/* deps already have their own semver pinning and the
+        # whole site is small enough that a fresh resolve adds <10s.
+        run: npm install --no-audit --no-fund
 
       - name: Stage wheel for Pyodide
         run: |
