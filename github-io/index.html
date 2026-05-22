@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>a puzzle a day</title>
+    <meta
+      name="description"
+      content="Interactive 3D solver for the Dragon Fjord a-puzzle-a-day calendar puzzle. Pick a date — see one valid arrangement of the 8 pieces, rendered live."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Pyodide loaded ahead of the app bundle; initializeCadPyodideRuntime uses globalThis.loadPyodide. -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

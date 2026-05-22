@@ -1,0 +1,535 @@
+/* CADbuildr brand palette (mirrors globals.css; do not invent new colors). */
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+
+  --cb-gray-logo: #40494b;
+  --cb-orange: #e87724;
+  --cb-martian-red: #9c340a;
+  --cb-orange-soft: #fdba74;
+  --cb-bg-deep: #0e1113;
+  --cb-bg-mid: #15191b;
+  --cb-bg-elev: #1c2123;
+  --cb-border: #2c3335;
+  --cb-border-strong: #3d4548;
+  --cb-text: #f3ede7;
+  --cb-text-muted: #b9b0a6;
+  --cb-text-soft: #8c857b;
+
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: radial-gradient(ellipse at top right, #1a2026 0%, var(--cb-bg-deep) 55%);
+  color: var(--cb-text);
+  font-feature-settings: "ss01" on, "cv11" on;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100%;
+}
+
+/* ---------- layout ---------- */
+
+.page {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 56px 32px 72px;
+  display: grid;
+  gap: 32px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.topbar .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--cb-text-muted);
+}
+
+.topbar .brand .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--cb-orange);
+  box-shadow: 0 0 16px rgba(232, 119, 36, 0.55);
+}
+
+.topbar .links {
+  display: inline-flex;
+  gap: 18px;
+  font-size: 13px;
+  color: var(--cb-text-muted);
+}
+
+.topbar .links a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+  padding-bottom: 1px;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.topbar .links a:hover {
+  color: var(--cb-orange-soft);
+  border-color: var(--cb-orange-soft);
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+@media (max-width: 960px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1.02;
+  margin: 0;
+  color: var(--cb-text);
+  letter-spacing: -0.02em;
+}
+
+.hero h1 .emph {
+  background: linear-gradient(135deg, var(--cb-orange) 0%, var(--cb-orange-soft) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p.lead {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--cb-text-muted);
+  max-width: 560px;
+  margin: 0;
+}
+
+.hero .badges {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.badge {
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(232, 119, 36, 0.10);
+  border: 1px solid rgba(232, 119, 36, 0.25);
+  color: var(--cb-orange-soft);
+  letter-spacing: 0.02em;
+}
+
+.badge.gray {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--cb-border);
+  color: var(--cb-text-muted);
+}
+
+/* Today-card sits to the right of the hero copy. */
+.today-card {
+  background: linear-gradient(165deg, rgba(232, 119, 36, 0.18) 0%, rgba(22, 27, 30, 0.0) 65%),
+    rgba(28, 33, 35, 0.78);
+  border: 1px solid var(--cb-border-strong);
+  border-radius: 18px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.today-card .label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--cb-text-soft);
+}
+
+.today-card .date {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--cb-text);
+}
+
+.today-card .subdate {
+  color: var(--cb-text-muted);
+  font-size: 14px;
+}
+
+.today-card .actions {
+  display: inline-flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 120ms ease, background-color 160ms ease,
+    border-color 160ms ease, color 160ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, var(--cb-orange) 0%, var(--cb-martian-red) 100%);
+  color: #fff;
+  box-shadow: 0 8px 22px -10px rgba(232, 119, 36, 0.7);
+}
+
+.btn.ghost {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--cb-border);
+  color: var(--cb-text);
+}
+
+.btn.ghost:hover {
+  border-color: var(--cb-orange);
+  color: var(--cb-orange-soft);
+}
+
+/* ---------- main two-column ---------- */
+
+.workspace {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (max-width: 960px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  background: rgba(22, 27, 30, 0.7);
+  border: 1px solid var(--cb-border);
+  border-radius: 18px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  backdrop-filter: blur(8px);
+}
+
+.panel h2 {
+  font-family: var(--serif);
+  font-weight: 700;
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.panel .panel-hint {
+  margin: -4px 0 0;
+  color: var(--cb-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* viewer panel intentionally has no padding so the canvas fills the card.
+   Override the .panel `display: flex` so the R3F wrapper div takes the
+   full panel size (instead of its `flex-direction: column` auto-height,
+   which collapses to the canvas default 300x150). */
+.panel.viewer-panel {
+  padding: 0;
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+.panel.viewer-panel > div:not(.viewer-header):not(.viewer-status) {
+  width: 100%;
+  height: 100%;
+}
+
+
+.viewer-header {
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  right: 18px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.viewer-header .who {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  background: rgba(14, 17, 19, 0.65);
+  border: 1px solid var(--cb-border);
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--cb-text-muted);
+  pointer-events: auto;
+}
+
+.viewer-status {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(14, 17, 19, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 6;
+  color: var(--cb-text-muted);
+  font-size: 13px;
+  gap: 10px;
+}
+
+.viewer-status.error {
+  color: #ffb4a4;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  font-size: 12px;
+  text-align: center;
+  padding: 24px;
+  white-space: pre-wrap;
+}
+
+/* date picker tweaks (overrides for react-day-picker built-in classes) */
+.rdp {
+  --rdp-cell-size: 38px;
+  --rdp-accent-color: var(--cb-orange);
+  --rdp-background-color: rgba(255, 255, 255, 0.06);
+  margin: 0;
+}
+
+.rdp-button:hover:not([disabled]) {
+  background-color: rgba(232, 119, 36, 0.15);
+  color: var(--cb-orange-soft);
+}
+
+.rdp-day_selected,
+.rdp-day_selected:focus,
+.rdp-day_selected:hover {
+  background: linear-gradient(135deg, var(--cb-orange) 0%, var(--cb-martian-red) 100%);
+  color: #fff;
+  font-weight: 600;
+}
+
+.rdp-day_today:not(.rdp-day_selected) {
+  color: var(--cb-orange);
+  font-weight: 700;
+}
+
+.rdp-caption_label {
+  font-family: var(--serif);
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.rdp-head_cell {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+  color: var(--cb-text-soft);
+}
+
+/* ---------- piece palette ---------- */
+
+.pieces {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.piece-card {
+  border: 1px solid var(--cb-border);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.piece-card.highlighted {
+  border-color: var(--cb-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 30px -20px rgba(232, 119, 36, 0.55);
+}
+
+.piece-card .name {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: 13px;
+}
+
+.piece-shape {
+  display: grid;
+  gap: 2px;
+}
+
+.piece-shape .cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: transparent;
+}
+
+.piece-shape .cell.filled {
+  background: var(--piece-color, var(--cb-orange));
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18) inset;
+}
+
+/* ---------- about ---------- */
+
+.about {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 800px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-card h3 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 17px;
+  margin: 0 0 8px;
+  color: var(--cb-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.about-card p {
+  margin: 0;
+  color: var(--cb-text-muted);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+footer.foot {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--cb-border);
+  font-size: 13px;
+  color: var(--cb-text-soft);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+footer.foot a {
+  color: var(--cb-text-muted);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+}
+
+footer.foot .powered-by {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 0;
+}
+
+footer.foot .powered-by img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+footer.foot .powered-by .cb {
+  color: var(--cb-text);
+  font-weight: 600;
+}
+
+footer.foot .foot-meta {
+  color: var(--cb-text-muted);
+}
+
+/* simple spinner */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(232, 119, 36, 0.3);
+  border-top-color: var(--cb-orange);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
