@@ -5,7 +5,7 @@ Interactive 3D solver for the [Dragon Fjord A-Puzzle-A-Day](https://www.dragonfj
 Pick a date — eight polyomino pieces, one calendar board, exactly two cells uncovered.
 The in-browser solver finds a valid arrangement, then the CADbuildr kernel renders it live.
 
-➡️ **Live demo**: https://cadbuildr.github.io/a-puzzle-a-day/
+➡️ **Live demo**: https://clement91190.github.io/a-puzzle-a-day/
 
 ## What's in here
 

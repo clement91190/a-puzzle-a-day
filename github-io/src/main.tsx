@@ -342,7 +342,7 @@ function App() {
           >
             The physical puzzle <ExternalLink size={12} style={{ verticalAlign: "-1px" }} />
           </a>
-          <a href="https://github.com/cadbuildr/a-puzzle-a-day" target="_blank" rel="noreferrer">
+          <a href="https://github.com/clement91190/a-puzzle-a-day" target="_blank" rel="noreferrer">
             <Github size={14} style={{ verticalAlign: "-2px", marginRight: 4 }} />
             Source
           </a>

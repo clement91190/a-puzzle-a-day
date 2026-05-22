@@ -1,6 +1,6 @@
 # a-puzzle-a-day github-io site
 
-The React + React-Three-Fiber demo at https://cadbuildr.github.io/a-puzzle-a-day/.
+The React + React-Three-Fiber demo at https://clement91190.github.io/a-puzzle-a-day/.
 
 ## Stack
 
