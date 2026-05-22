@@ -79,7 +79,7 @@ const PIECE_SWATCH_HEX: Record<string, string> = {
   TTet: "#36AEBF",
   LTet: "#C58FE8",
   STet: "#E89BAD",
-  Square: "#A0BD3A",
+  Square: "#FFBCD1",
 };
 
 const PIECE_NAMES = Object.keys(PIECE_SHAPES);
