@@ -26,11 +26,17 @@ def cell_for_month(month: int) -> tuple[int, int]:
 
 
 def cell_for_day(day: int) -> tuple[int, int]:
-    """Map 1..31 to the (row, col) of the day cell (rows 2-6)."""
+    """Map 1..31 to the (row, col) of the day cell (rows 2-6).
+
+    Days 1..28 fill rows 2-5 left-to-right. Days 29, 30, 31 sit in the
+    centered notch of row 6 at columns 2, 3, 4.
+    """
     if not 1 <= day <= 31:
         raise ValueError(f"day must be in 1..31, got {day}")
-    idx = day - 1
-    return (2 + idx // 7, idx % 7)
+    if day <= 28:
+        idx = day - 1
+        return (2 + idx // 7, idx % 7)
+    return (6, day - 27)
 
 
 def board_cells_for_date(month: int, day: int) -> tuple[tuple[int, int], tuple[int, int]]:
@@ -46,9 +52,9 @@ def label_for_cell(row: int, col: int) -> str:
             return MONTH_LABELS[idx]
         return ""
     if row == 6:
-        if col > 2:
+        if not 2 <= col <= 4:
             return ""
-        return str(28 + col + 1)
+        return str(27 + col)
     return str((row - 2) * 7 + col + 1)
 
 

@@ -89,14 +89,16 @@ class CalendarBoard(Part):
         positioning (text-anchor middle at cell centre) at the cost of more
         per-element overhead in replicad's text processor.
 
-        Geometry: replicad's ``parseSVG`` mirrors the imported drawing across
-        the x-axis (svg y-down → CAD y-up). So we feed svg-y directly:
-        row 0 = small svg-y → high CAD y after the mirror → top of the board.
+        Coordinates are centered on the slab origin to match
+        ``Rectangle.from_center_and_sides(Point(sketch, 0, 0), …)``. SVG y
+        grows downward; replicad's ``parseSVG`` mirrors across the x-axis on
+        the way to CAD, so row 0 at small (negative) svg-y ends up at high
+        CAD y — the top of the board.
         """
         rows = len(BOARD_GRID)
         cols = len(BOARD_GRID[0])
-        canvas_w = cols * BOARD_CELL_SIZE_MM + 2 * BOARD_MARGIN_MM
-        canvas_h = rows * BOARD_CELL_SIZE_MM + 2 * BOARD_MARGIN_MM
+        half_w = cols * BOARD_CELL_SIZE_MM / 2.0
+        half_h = rows * BOARD_CELL_SIZE_MM / 2.0
 
         cells = list(labelled_cells())
         if limit is not None:
@@ -105,8 +107,8 @@ class CalendarBoard(Part):
         svg_texts: list[str] = []
         for row, col in cells:
             label = label_for_cell(row, col)
-            x_mm = BOARD_MARGIN_MM + (col + 0.5) * BOARD_CELL_SIZE_MM
-            y_mm = BOARD_MARGIN_MM + (row + 0.5) * BOARD_CELL_SIZE_MM
+            x_mm = -half_w + (col + 0.5) * BOARD_CELL_SIZE_MM
+            y_mm = -half_h + (row + 0.5) * BOARD_CELL_SIZE_MM
             font_size = "6" if len(label) > 2 else "7"
             svg_texts.append(
                 f'<text x="{x_mm:.2f}" y="{y_mm:.2f}" '
@@ -115,7 +117,8 @@ class CalendarBoard(Part):
             )
 
         svg_content = (
-            f'<svg viewBox="0 0 {canvas_w:.2f} {canvas_h:.2f}" '
+            f'<svg viewBox="{-half_w:.2f} {-half_h:.2f} '
+            f'{2 * half_w:.2f} {2 * half_h:.2f}" '
             f'xmlns="http://www.w3.org/2000/svg">\n'
             + "\n".join(svg_texts) + "\n"
             + "</svg>"

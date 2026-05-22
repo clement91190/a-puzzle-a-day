@@ -1,10 +1,9 @@
 """Calendar board geometry + Dragon Fjord piece shapes.
 
-The Dragon Fjord A-Puzzle-A-Day board is a 7×7 grid with cells removed at the
-two top-right corner cells (rows 0-1, columns 6-7 in some layouts; the
-canonical layout used by Dragon Fjord is rows 0-1, cols 6) and the bottom
-row beyond column 3. The 12 month labels fill rows 0-1 and the 31 day numbers
-fill the rest:
+The Dragon Fjord A-Puzzle-A-Day board is a 7×7 grid with two voids in the
+top-right corner (rows 0-1, col 6) and four voids in the bottom row flanking
+a centered 29/30/31 notch (row 6, cols 0-1 and 5-6). The 12 month labels fill
+rows 0-1 and the 31 day numbers fill the rest:
 
 ```
    col 0  1  2  3  4  5  6
@@ -14,10 +13,10 @@ r2  1   2   3   4   5   6   7
 r3  8   9   10  11  12  13  14
 r4  15  16  17  18  19  20  21
 r5  22  23  24  25  26  27  28
-r6  29  30  31  .   .   .   .       (cols 3-6 missing)
+r6  .   .   29  30  31  .   .       (cols 0-1 and 5-6 missing)
 ```
 
-That's 12 + 31 = 43 labelled cells and 6 piece-area cells. The 8 pieces have
+That's 12 + 31 = 43 labelled cells and 6 piece-area voids. The 8 pieces have
 a combined area of 41 squares (sum of cell counts below), and on any given
 date exactly 2 cells (the month + the day) are uncovered. 49 - 2 - 6 = 41 ✓.
 
@@ -36,7 +35,7 @@ BOARD_GRID: tuple[tuple[bool, ...], ...] = (
     (True,  True,  True,  True,  True,  True,  True),    # 8-14
     (True,  True,  True,  True,  True,  True,  True),    # 15-21
     (True,  True,  True,  True,  True,  True,  True),    # 22-28
-    (True,  True,  True,  False, False, False, False),   # 29-31
+    (False, False, True,  True,  True,  False, False),   # 29-31 (centered)
 )
 """``True`` = labelled square that a piece can cover. ``False`` = void cell."""
 
