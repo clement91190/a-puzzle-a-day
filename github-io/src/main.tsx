@@ -55,26 +55,30 @@ const MESH_SCENE_POSITION: [number, number, number] = [0, 0, 0];
 const CAD_Z_UP_TO_Y_UP: [number, number, number] = [-Math.PI / 2, 0, 0];
 
 const PIECE_SHAPES: Record<string, ReadonlyArray<readonly [number, number]>> = {
+  // Pentominoes (5 cells each)
+  Plus: [[0, 1], [1, 0], [1, 1], [1, 2], [2, 1]],
   L: [[0, 0], [1, 0], [2, 0], [3, 0], [3, 1]],
   P: [[0, 0], [0, 1], [1, 0], [1, 1], [2, 0]],
   Y: [[0, 0], [1, 0], [1, 1], [2, 0], [3, 0]],
   N: [[0, 1], [1, 1], [2, 0], [2, 1], [3, 0]],
-  U: [[0, 0], [0, 2], [1, 0], [1, 1], [1, 2]],
-  V: [[0, 0], [1, 0], [2, 0], [2, 1], [2, 2]],
-  Z: [[0, 0], [0, 1], [1, 1], [2, 1], [2, 2]],
-  Square: [[0, 0], [0, 1], [1, 0], [1, 1], [2, 0], [2, 1]],
+  // Tetrominoes (4 cells each)
+  TTet: [[0, 0], [0, 1], [0, 2], [1, 1]],
+  LTet: [[0, 0], [1, 0], [2, 0], [2, 1]],
+  STet: [[0, 1], [0, 2], [1, 0], [1, 1]],
+  Square: [[0, 0], [0, 1], [1, 0], [1, 1]],
 };
 
 // CSS swatch approximations for each piece (legend only). The 3D render uses
 // the foundation `paint` named colors from the Python constants.
 const PIECE_SWATCH_HEX: Record<string, string> = {
+  Plus: "#C91A09",
   L: "#E87724",
-  P: "#3470DC",
-  Y: "#C58FE8",
-  N: "#4B9F4A",
-  U: "#F2CD37",
-  V: "#C91A09",
-  Z: "#36AEBF",
+  P: "#F2CD37",
+  Y: "#4B9F4A",
+  N: "#3470DC",
+  TTet: "#36AEBF",
+  LTet: "#C58FE8",
+  STet: "#E89BAD",
   Square: "#A0BD3A",
 };
 
@@ -364,13 +368,14 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.6 }}
           >
-            The Dragon Fjord <em>A-Puzzle-A-Day</em> hides eight wooden polyomino pieces in a
-            7×7 calendar grid. For any (month, day), at least one arrangement leaves exactly
-            those two cells visible — pick a date below and the in-browser solver lays out a
-            valid arrangement, rendered live with the CADbuildr kernel.
+            <em>The Whole Year Puzzle</em> hides nine wooden polyomino pieces (5 pentominoes
+            + 4 tetrominoes) in a 7×7 calendar grid. For any (month, day), at least one
+            arrangement leaves exactly those two cells visible — pick a date below and the
+            in-browser solver lays out a valid arrangement, rendered live with the CADbuildr
+            kernel.
           </motion.p>
           <div className="badges">
-            <span className="badge">8 pieces · 41 squares</span>
+            <span className="badge">9 pieces · 41 squares</span>
             <span className="badge gray">Pyodide → kernel-api → R3F</span>
             <span className="badge gray">CADbuildr SDK demo</span>
           </div>
@@ -552,12 +557,12 @@ function App() {
 
       <section className="panel">
         <h2>
-          <Puzzle size={18} /> The eight pieces
+          <Puzzle size={18} /> The nine pieces
         </h2>
         <p className="panel-hint">
-          Polyominoes from the canonical Dragon Fjord set. Their combined area is exactly
-          41 squares — what's left after we remove the 6 board voids and the 2 (month, day)
-          slots.
+          The Whole Year Puzzle set: 5 pentominoes + 4 tetrominoes. Their combined area is
+          exactly 41 squares — what's left after we remove the 6 board voids and the 2
+          (month, day) slots.
         </p>
         <div className="pieces">
           {PIECE_NAMES.map((name) => (
@@ -572,9 +577,9 @@ function App() {
             <Sparkles size={14} /> The math
           </h3>
           <p>
-            7 × 7 grid = 49 cells. The board hides 6 corner voids, the date hides 2 more cells,
-            leaving 41 to cover with 8 pieces totalling 41 cells. There's always a solution; on
-            most dates, many.
+            7 × 7 grid = 49 cells. The board hides 6 voids (top-right pair + centered-notch
+            quartet), the date hides 2 more cells, leaving 41 to cover with 9 pieces totalling
+            41 cells. There's always a solution; on most dates, many.
           </p>
         </div>
         <div className="panel about-card">
@@ -604,7 +609,7 @@ function App() {
           <img src="cadbuildr-logo.svg" alt="CADbuildr" />
           <span className="cb">CADbuildr</span>
         </a>
-        <span className="foot-meta">Puzzle by Dragon Fjord.</span>
+        <span className="foot-meta">The Whole Year Puzzle.</span>
       </footer>
     </div>
   );
