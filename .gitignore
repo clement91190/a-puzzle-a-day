@@ -2,6 +2,7 @@ node_modules/
 dist/*.tar.gz
 github-io/dist/
 github-io/node_modules/
+github-io/package-lock.json
 __pycache__/
 .pytest_cache/
 .venv/
