@@ -107,7 +107,7 @@ DEFAULT_PIECE_COLORS: dict[str, str] = {
     "TTet":   "medium_azure",
     "LTet":   "lavender",
     "STet":   "coral",
-    "Square": "bright_pink",
+    "Square": "pink",
 }
 
 DEFAULT_BOARD_COLOR: str = "tan"
