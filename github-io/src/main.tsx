@@ -534,7 +534,7 @@ function App() {
             hubBaseUrl={hubBaseUrl}
             keyId={sdkKeyId}
             sessionToken={sdkKeyId ? undefined : sessionToken}
-            projectKey="puzzle"
+            projectKey="a-puzzle-a-day"
           >
             <CadbuildrViewer
               dag={dag}
