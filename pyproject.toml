@@ -1,6 +1,6 @@
 [project]
 name = "cadbuildr-projects-a-puzzle-a-day"
-version = "0.1.1"
+version = "0.1.2"
 description = "The Whole Year Puzzle: 9 polyomino pieces + calendar board + solver."
 readme = "README.md"
 requires-python = ">=3.10.0,<4.0.0"

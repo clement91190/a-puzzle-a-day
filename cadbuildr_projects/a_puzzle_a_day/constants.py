@@ -76,10 +76,10 @@ PIECE_SHAPES: dict[str, tuple[tuple[int, int], ...]] = {
     "L":      ((0, 0), (1, 0), (2, 0), (3, 0), (3, 1)),
     # P-pentomino — 2×2 block + tab.
     "P":      ((0, 0), (0, 1), (1, 0), (1, 1), (2, 0)),
-    # Y-pentomino — 4-tall column with a bump on the second cell.
-    "Y":      ((0, 0), (1, 0), (1, 1), (2, 0), (3, 0)),
-    # N-pentomino — offset zig-zag.
-    "N":      ((0, 1), (1, 1), (2, 0), (2, 1), (3, 0)),
+    # U-pentomino — U-shape, 3 wide + 2 prongs.
+    "U":      ((0, 0), (0, 2), (1, 0), (1, 1), (1, 2)),
+    # Z-pentomino — Z-shape with single-cell middle.
+    "Z":      ((0, 0), (0, 1), (1, 1), (2, 1), (2, 2)),
 
     # ---- Tetrominoes (4 pieces × 4 cells = 16 cells) ---------------------
     # T-tetromino — 3 in a row + 1 below the middle.
@@ -98,12 +98,13 @@ PIECE_NAMES: tuple[str, ...] = tuple(PIECE_SHAPES.keys())
 # Each piece gets its own vivid colour — same names as the LEGO store palette
 # so they resolve via ``cadbuildr.foundation.constants.DEFAULT_COLORS`` with no
 # extra registration. Nine pieces → nine hues that read well over a tan board.
+# Deliberately avoiding green and dark blue — they don't exist in the physical set.
 DEFAULT_PIECE_COLORS: dict[str, str] = {
     "Plus":   "bright_red",
     "L":      "bright_orange",
     "P":      "bright_yellow",
-    "Y":      "bright_green",
-    "N":      "bright_blue",
+    "U":      "dark_turquoise",
+    "Z":      "purple",
     "TTet":   "medium_azure",
     "LTet":   "lavender",
     "STet":   "coral",
