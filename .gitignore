@@ -1,0 +1,14 @@
+node_modules/
+dist/
+github-io/dist/
+github-io/node_modules/
+github-io/package-lock.json
+github-io/public/local-puzzle/*.whl
+__pycache__/
+.pytest_cache/
+.venv/
+*.log
+.DS_Store
+tsconfig.tsbuildinfo
+.env.local
+.env

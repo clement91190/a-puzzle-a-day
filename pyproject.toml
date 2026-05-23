@@ -1,0 +1,31 @@
+[project]
+name = "a-puzzle-a-day"
+version = "0.1.2"
+description = "The Whole Year Puzzle: 9 polyomino pieces + calendar board + solver."
+readme = "README.md"
+requires-python = ">=3.10.0,<4.0.0"
+authors = [
+    {name = "CADbuildr Team"},
+]
+dependencies = [
+    "cadbuildr-foundation>=0.2.8,<0.3.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0,<9.0.0",
+]
+
+[tool.cadbuildr.dependencies]
+cadbuildr-foundation = "^0.2.8"
+
+[tool.hatch.build.targets.wheel]
+packages = [
+    "a_puzzle_a_day",
+]
+
+[build-system]
+requires = [
+    "hatchling>=1.27.0",
+]
+build-backend = "hatchling.build"
