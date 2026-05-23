@@ -13,7 +13,7 @@ The in-browser solver finds a valid arrangement, then the CADbuildr kernel rende
 ├── a_puzzle_a_day/
 │   ├── solver/     pure-logic: 7×7 grid, piece catalog, exact-cover search
 │   └── cad/        foundation Parts + Assembly + mm conversion
-├── examples/       runnable scripts (open the folder in the CADbuildr prototype to Play)
+├── examples/       runnable scripts (open the folder in CADbuildr Prototype to Play)
 ├── github-io/      React + R3F demo site (Vite, deploys to GitHub Pages)
 └── pyproject.toml  the Python package — installable from this directory
 ```
@@ -51,9 +51,9 @@ uv sync          # installs cadbuildr-foundation
 uv run python examples/today.py    # builds today's solved arrangement
 ```
 
-If you have the CADbuildr prototype desktop app, open this folder and press
-**Play** on `examples/today.py` or `examples/board_only.py` to see the
-geometry in the workbench.
+If you have [CADbuildr Prototype](https://cadbuildr.com/downloads) (our
+desktop app), open this folder and press **Play** on `examples/today.py`
+or `examples/board_only.py` to see the geometry in the workbench.
 
 ## Credits
 

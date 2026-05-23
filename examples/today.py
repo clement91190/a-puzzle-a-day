@@ -1,4 +1,4 @@
-"""Render today's solved puzzle. Press Play in the prototype to see it."""
+"""Render today's solved puzzle. Press Play in CADbuildr Prototype to see it."""
 
 from datetime import date
 
