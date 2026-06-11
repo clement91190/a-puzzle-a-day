@@ -112,7 +112,7 @@ class CalendarBoard(Part):
             font_size = "6" if len(label) > 2 else "7"
             svg_texts.append(
                 f'<text x="{x_mm:.2f}" y="{y_mm:.2f}" '
-                f'font-size="{font_size}" font-family="Arial" '
+                f'font-size="{font_size}" font-family="Roboto" '
                 f'text-anchor="middle" dominant-baseline="middle">{label}</text>'
             )
 
